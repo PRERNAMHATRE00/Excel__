@@ -1,0 +1,121 @@
+PROJECT 1: Trade Record Validation & Reconciliation Tracker
+What I Built:
+A system to compare internal bank records with external client records to find mismatches in trade data.
+
+What I Did:
+Step 1: Set up data
+
+Created 2 sheets: "Trades_Internal(Bank Records)" and "Trades_External(Client Record)"
+
+Entered 20 trades with TradeID, Quantity, Price, Status
+
+Step 2: Pull data together
+
+Created "Reconciliation" sheet
+
+Pulled data from both sheets using simple = references
+
+Later learned XLOOKUP is better for real work
+
+Step 3: Compare and find mismatches
+
+Added columns: Qty_match, price_match, status_match
+
+Used IF function to check if values matched
+
+Created Overall column to flag "OK" or "Exception"
+
+Step 4: Extract exceptions
+
+Used FILTER function to show only exceptions
+
+Created "Exceptions" sheet showing TRD006 only
+
+Step 5: Build Dashboard
+
+Created summary metrics sheet
+
+Added Total Trades, Matched, Exceptions, Match Rate %
+
+Step 6: Add Exception breakdown
+
+Created PivotTable showing Status Mismatch breakdown
+
+Added to Dashboard
+
+Mistakes I Made & How I Fixed Them:
+Mistake 1: Used wrong XLOOKUP syntax
+
+I wrote: =XLOOKUP(A2,Sheet!A1:H21,4)
+
+Problem: XLOOKUP doesn't use column numbers like VLOOKUP
+
+Fix: =XLOOKUP(A2,Sheet!A:A,Sheet!E:E)
+
+Mistake 2: Wrong IF formula for checking matches
+
+I tried: =IF(AND(a2=b2,c2=d2,e2=f2)<"o","E") ❌
+
+Problem: This is not how AND works with text
+
+Fix: =IF(AND(H2="Match",I2="Match",J2="Match"),"OK","Exception") ✅
+
+Mistake 3: Wrong COUNTIF formula
+
+I wrote: =COUNTIF(Reconciliation!K:K) ❌
+
+Problem: Missing criteria to count
+
+Fix: =COUNTIF(Reconciliation!K:K, "OK") ✅
+
+Mistake 4: Wrong percentage calculation
+
+I did: Exception % = 1/19 = 5.26% ❌
+
+Problem: Should divide by TOTAL (20), not Matched (19)
+
+Fix: Exception % = 1/20 = 5% ✅
+
+Mistake 5: #SPILL! error in PivotTable
+
+Problem: Cells blocking PivotTable output
+
+Fix: Cleared destination cells before creating PivotTable
+
+Practice I Did:
+Used XLOOKUP multiple times to understand syntax
+
+Practiced IF, AND, COUNTIF functions
+
+Created  PivotTables
+
+Practiced formatting percentages correctly
+
+Used FILTER function to extract exceptions
+
+Improvements I Made:
+Before:
+
+Used simple = references without understanding limitations
+
+Wrote incorrect IF formulas
+
+Couldn't create proper PivotTables
+
+After:
+
+Know XLOOKUP syntax: =XLOOKUP(lookup, search_range, return_range)
+
+Can write nested IF with AND: =IF(AND(condition1, condition2), "True", "False")
+
+Can create PivotTables with filters and calculations
+
+Understand match rate = matched/total * 100
+
+Key Learnings:
+Formula	Correct Syntax	What It Does
+XLOOKUP	=XLOOKUP(A2, Sheet!A:A, Sheet!E:E)	Finds data by ID
+IF	=IF(A2=B2, "Match", "Mismatch")	Compares 2 cells
+IF + AND	=IF(AND(H2="Match", I2="Match"), "OK", "Exception")	Checks multiple conditions
+COUNTIF	=COUNTIF(Sheet!K:K, "OK")	Counts cells meeting condition
+FILTER	=FILTER(Sheet!A:K, Sheet!K:K="Exception")	Shows only matching rows
