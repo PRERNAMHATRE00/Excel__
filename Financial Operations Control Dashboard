@@ -1,0 +1,141 @@
+What I Built:
+A dashboard to track transaction status by team and date, showing settlement rates and exceptions.
+
+What I Did:
+Step 1: Set up data
+
+Created "Transactions" sheet with 20 records
+
+Columns: Date, TradeID, Team, Instrument, Status, Amount, Settlement_Date, Days_to_Settle, Comments
+
+Step 2: Create Key Metrics
+
+Total Transactions: 20
+
+Settled: 12 (60%)
+
+Pending: 5 (25%)
+
+Failed: 3 (15%)
+
+Used COUNTIF and COUNTA formulas
+
+Step 3: Create 3 PivotTables
+
+PivotTable 1: Status by Team
+
+PivotTable 2: Status by Date (Daily Trend)
+
+PivotTable 3: Settlement Rate by Team (% of Row Total)
+
+Step 4: Add Charts
+
+Bar Chart: Status by Team
+
+Line Chart: Daily Status Trend
+
+Pie Chart: Overall Status Distribution
+
+Step 5: Build Dashboard
+
+Combined all metrics and charts on one sheet
+
+Mistakes I Made & How I Fixed Them:
+Mistake 1: Wrong denominator for percentage
+
+I did: Rate = Settled/Matched ❌
+
+Fix: Rate = Settled/Total ✅
+
+Mistake 2: Forgot to group dates in PivotTable
+
+Problem: Dates showing individually
+
+Fix: Right-click date → Group → Days
+
+Mistake 3: Couldn't find "Show Values As"
+
+Problem: Right-click on value field → Show Values As → % of Row Total
+
+Fix: This shows each team's status percentage
+
+Mistake 4: PivotTable not updating
+
+Problem: Data changed but PivotTable didn't update
+
+Fix: Right-click PivotTable → Refresh
+
+Practice I Did:
+Created 3 different PivotTables from same data
+
+Practiced grouping dates in PivotTables
+
+Created 3 different chart types
+
+Used "Show Values As" for percentages
+
+Built complete Dashboard with all elements
+
+Improvements I Made:
+Before:
+
+Didn't know how to group dates in PivotTables
+
+Couldn't create percentage calculations correctly
+
+Didn't know how to use "Show Values As"
+
+After:
+
+Can group dates: Right-click → Group → Days/Months
+
+Know settlement rate = settled/total * 100
+
+Can use Show Values As → % of Row Total
+
+Can create complete Operations Dashboard
+
+Key Metrics Found:
+Metric	Value
+Total Trades	20
+Settled	12 (60%)
+Pending	5 (25%)
+Failed	3 (15%)
+Status by Team:
+
+Equities: 6 Settled, 2 Pending, 1 Failed
+
+Fixed Income: 3 Settled, 1 Failed
+
+FX: 1 Settled, 3 Pending
+
+Commodities: 2 Settled, 1 Failed
+
+FINAL REFLECTION
+Skills I Learned:
+XLOOKUP: Proper syntax and when to use
+
+IF + AND: Multiple condition checking
+
+COUNTIF: Counting specific values
+
+FILTER: Extracting matching rows
+
+PivotTables: Grouping, filtering, calculations
+
+Charts: Bar, Line, Pie charts from PivotTables
+
+Percentage calculations: Using correct denominators
+
+Final Checklist:
+Task	Done
+Reconciliation sheet	✅
+Match/Mismatch flags	✅
+Exception identification	✅
+Dashboard metrics	✅
+PivotTables (3)	✅
+Charts (3)	✅
+XLOOKUP practice	✅
+IF + AND practice	✅
+Ready for interview! 
+
